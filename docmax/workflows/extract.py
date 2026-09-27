@@ -1,12 +1,12 @@
 from pathlib import Path
 
-from docmax.extractor import (
+from docmax-demo.extractor import (
     extract_text,
     extract_images,
     extract_metadata,
 )
 
-from docmax.workflows.common import (
+from docmax-demo.workflows.common import (
     select_single_pdf,
     get_output_name,
     success_screen,

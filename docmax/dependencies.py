@@ -1,8 +1,8 @@
 """
-DocMax Dependencies — checks whether external tools are available.
+docmax-demo Dependencies — checks whether external tools are available.
 
 Resolution order for each tool:
-  1. Saved path in ~/.docmax/config.json  (set by `docmax setup`)
+  1. Saved path in ~/.docmax-demo/config.json  (set by `docmax-demo setup`)
   2. shutil.which (tool is on system PATH)
 """
 
@@ -14,7 +14,7 @@ from shutil import which
 from rich.console import Console
 from rich.table import Table
 
-from docmax.config_manager import get_tool_path
+from docmax-demo.config_manager import get_tool_path
 
 console = Console()
 
@@ -54,7 +54,7 @@ def has_xelatex() -> bool:
 # ---------------------------------------------------------------------------
 
 def doctor() -> None:
-    table = Table(title="DocMax System Check")
+    table = Table(title="docmax-demo System Check")
     table.add_column("Dependency", style="bold")
     table.add_column("Status")
     table.add_column("Path / Note", style="dim")
@@ -83,7 +83,7 @@ def doctor() -> None:
 
     if any_missing:
         console.print(
-            "\n[yellow]Run [bold cyan]docmax setup[/bold cyan] to install missing tools.[/yellow]"
+            "\n[yellow]Run [bold cyan]docmax-demo setup[/bold cyan] to install missing tools.[/yellow]"
         )
     else:
         console.print("\n[green]All dependencies satisfied.[/green]")
@@ -96,8 +96,8 @@ def doctor() -> None:
 def _missing_hint(tool_name: str) -> None:
     console.print(
         f"\n[red]{tool_name} is not installed or not on PATH.[/red]\n"
-        "Run [bold cyan]docmax setup[/bold cyan] to install it automatically.\n"
-        "Then run [bold cyan]docmax doctor[/bold cyan] to verify.\n"
+        "Run [bold cyan]docmax-demo setup[/bold cyan] to install it automatically.\n"
+        "Then run [bold cyan]docmax-demo doctor[/bold cyan] to verify.\n"
     )
 
 

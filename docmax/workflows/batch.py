@@ -1,12 +1,12 @@
 import questionary
 
-from docmax.batch import (
+from docmax-demo.batch import (
     batch_convert,
     batch_compress,
     batch_with_ocr,
 )
 
-from docmax.workflows.common import select_folder
+from docmax-demo.workflows.common import select_folder
 
 
 def batch_convert_workflow():

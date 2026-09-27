@@ -1,5 +1,5 @@
 """
-DocMax CLI - Forge your documents from your terminal.
+docmax-demo CLI - Forge your documents from your terminal.
 All interactive menus use dict-driven dispatch via the menu module's *_MENU dicts.
 """
 
@@ -13,17 +13,17 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
 
-from docmax import __version__
-from docmax.theme import DocMax_THEME
-from docmax.config import DEFAULT_OCR_LANG, DEFAULT_COMPRESS_PRESET, DEFAULT_BATCH_WORKERS
-from docmax.banner import show_banner
-from docmax.setup import setup_dependencies
-from docmax.dependencies import doctor as run_doctor
-from docmax.help import show_install_help
-from docmax.watcher import watch
+from docmax-demo import __version__
+from docmax-demo.theme import docmax-demo_THEME
+from docmax-demo.config import DEFAULT_OCR_LANG, DEFAULT_COMPRESS_PRESET, DEFAULT_BATCH_WORKERS
+from docmax-demo.banner import show_banner
+from docmax-demo.setup import setup_dependencies
+from docmax-demo.dependencies import doctor as run_doctor
+from docmax-demo.help import show_install_help
+from docmax-demo.watcher import watch
 
 # ── Menu functions + dicts ───────────────────────────────────────────────────
-from docmax.menu import (
+from docmax-demo.menu import (
     main_menu,
     pdf_menu,   PDF_MENU,
     ocr_menu,   OCR_MENU,
@@ -36,7 +36,7 @@ from docmax.menu import (
 )
 
 # ── PDF workflows (all in one file) ─────────────────────────────────────────
-from docmax.workflows.pdf import (
+from docmax-demo.workflows.pdf import (
     merge_workflow,
     split_workflow,
     compress_workflow,
@@ -48,7 +48,7 @@ from docmax.workflows.pdf import (
 )
 
 # ── OCR workflows (all in one file) ─────────────────────────────────────────
-from docmax.workflows.ocr_tools import (
+from docmax-demo.workflows.ocr_tools import (
     ocr_workflow,
     searchable_workflow,
     batch_ocr_workflow,
@@ -57,7 +57,7 @@ from docmax.workflows.ocr_tools import (
 )
 
 # ── Other workflows ──────────────────────────────────────────────────────────
-from docmax.workflows.convert import (
+from docmax-demo.workflows.convert import (
     markdown_to_pdf_workflow,
     markdown_to_docx_workflow,
     docx_to_pdf_workflow,
@@ -65,10 +65,10 @@ from docmax.workflows.convert import (
     images_to_pdf_workflow,
     pdf_to_images_workflow,
 )
-from docmax.workflows.extract import extract_text_workflow, extract_images_workflow, extract_metadata_workflow
-from docmax.workflows.batch import batch_convert_workflow, batch_compress_workflow, batch_ocr_folder_workflow
-from docmax.workflows.automation import auto_ocr_workflow, auto_searchable_workflow, auto_compress_workflow, auto_preprocess_workflow
-from docmax.workflows.image import (
+from docmax-demo.workflows.extract import extract_text_workflow, extract_images_workflow, extract_metadata_workflow
+from docmax-demo.workflows.batch import batch_convert_workflow, batch_compress_workflow, batch_ocr_folder_workflow
+from docmax-demo.workflows.automation import auto_ocr_workflow, auto_searchable_workflow, auto_compress_workflow, auto_preprocess_workflow
+from docmax-demo.workflows.image import (
     resize_workflow,
     convert_format_workflow,
     compress_image_workflow,
@@ -79,7 +79,7 @@ from docmax.workflows.image import (
     watermark_image_workflow,
     remove_bg_workflow,
 )
-from docmax.workflows.settings import (
+from docmax-demo.workflows.settings import (
     settings_ocr_workflow,
     doctor_workflow,
     setup_workflow,
@@ -91,21 +91,21 @@ from docmax.workflows.settings import (
 # ---------------------------------------------------------------------------
 
 app = typer.Typer(
-    name="DocMax",
-    help="DocMax - Unified Document Processing CLI. Forge your documents from your terminal.",
+    name="docmax-demo",
+    help="docmax-demo - Unified Document Processing CLI. Forge your documents from your terminal.",
     add_completion=True,
     rich_markup_mode="rich",
     no_args_is_help=False,
 )
 
-console = Console(theme=DocMax_THEME)
+console = Console(theme=docmax-demo_THEME)
 
 
 def _version_callback(value: bool):
     if value:
         console.print(
             Panel(
-                Text(f"DocMax v{__version__}", justify="center", style="bold green"),
+                Text(f"docmax-demo v{__version__}", justify="center", style="bold green"),
                 subtitle="[dim]Forge your documents from your terminal[/dim]",
                 border_style="green",
             )
@@ -220,7 +220,7 @@ def main(
         None, "--version", "-v",
         callback=_version_callback,
         is_eager=True,
-        help="Show DocMax version.",
+        help="Show docmax-demo version.",
     ),
 ):
     if ctx.invoked_subcommand:
@@ -295,7 +295,7 @@ def cmd_merge(
     if len(inputs) < 2:
         typer.echo("Error: Provide at least 2 PDF files to merge.", err=True)
         raise typer.Exit(1)
-    from docmax.operations import merge
+    from docmax-demo.operations import merge
     out_path = Path(output) if output else Path(inputs[0]).with_name("merged.pdf")
     merge(inputs, out_path)
 
@@ -306,7 +306,7 @@ def cmd_split(
     output_dir: Optional[Path] = typer.Option(None, "-o", "--output-dir"),
 ):
     """[bold]Split[/bold] a PDF into individual page files."""
-    from docmax.operations import split
+    from docmax-demo.operations import split
     split(input_file, output_dir)
 
 
@@ -317,7 +317,7 @@ def cmd_compress(
     preset: str = typer.Option(DEFAULT_COMPRESS_PRESET, "--preset"),
 ):
     """[bold]Compress[/bold] a PDF using Ghostscript."""
-    from docmax.operations import compress
+    from docmax-demo.operations import compress
     compress(input_file, output, preset)
 
 
@@ -328,7 +328,7 @@ def cmd_rotate(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Rotate[/bold] all pages of a PDF."""
-    from docmax.operations import rotate
+    from docmax-demo.operations import rotate
     rotate(input_file, degrees, output)
 
 
@@ -339,7 +339,7 @@ def cmd_pages(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Extract[/bold] a range of pages from a PDF."""
-    from docmax.operations import extract_pages
+    from docmax-demo.operations import extract_pages
     extract_pages(input_file, page_range, output)
 
 
@@ -350,7 +350,7 @@ def cmd_watermark(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Watermark[/bold] a PDF with an image or PDF overlay."""
-    from docmax.operations import watermark
+    from docmax-demo.operations import watermark
     watermark(input_file, watermark_file, output)
 
 
@@ -361,7 +361,7 @@ def cmd_encrypt(
     password: str = typer.Option(..., prompt=True, hide_input=True, confirmation_prompt=True),
 ):
     """[bold]Encrypt[/bold] a PDF with a password."""
-    from docmax.operations import encrypt
+    from docmax-demo.operations import encrypt
     encrypt(input_file, password, output)
 
 
@@ -372,7 +372,7 @@ def cmd_decrypt(
     password: str = typer.Option(..., prompt=True, hide_input=True),
 ):
     """[bold]Decrypt[/bold] a password-protected PDF."""
-    from docmax.operations import decrypt
+    from docmax-demo.operations import decrypt
     decrypt(input_file, password, output)
 
 
@@ -389,10 +389,10 @@ def cmd_ocr(
 ):
     """[bold]Run OCR[/bold] on an image or PDF file."""
     if input_file.suffix.lower() == ".pdf":
-        from docmax.engine import ocr_pdf
+        from docmax-demo.engine import ocr_pdf
         ocr_pdf(input_file, output, lang, fmt)
     else:
-        from docmax.engine import ocr_image
+        from docmax-demo.engine import ocr_image
         ocr_image(input_file, output, lang, fmt)
 
 
@@ -404,7 +404,7 @@ def cmd_searchable(
     dpi: int = typer.Option(300, "--dpi"),
 ):
     """[bold]Create a searchable PDF[/bold] from a scanned PDF."""
-    from docmax.engine import make_searchable_pdf
+    from docmax-demo.engine import make_searchable_pdf
     make_searchable_pdf(input_file, output, lang, dpi)
 
 
@@ -417,7 +417,7 @@ def cmd_batch_ocr(
     no_recursive: bool = typer.Option(False, "--no-recursive"),
 ):
     """[bold]Batch OCR[/bold] all images and PDFs in a directory."""
-    from docmax.batch import batch_with_ocr
+    from docmax-demo.batch import batch_with_ocr
     batch_with_ocr(directory, lang, fmt, not no_recursive, workers)
 
 
@@ -432,7 +432,7 @@ def cmd_convert(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Convert[/bold] a document to another format using Pandoc."""
-    from docmax.converter import convert
+    from docmax-demo.converter import convert
     convert(input_file, target_format, output)
 
 
@@ -442,7 +442,7 @@ def cmd_img2pdf(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Combine images[/bold] into a single PDF."""
-    from docmax.converter import images_to_pdf
+    from docmax-demo.converter import images_to_pdf
     images_to_pdf(source, output)
 
 
@@ -454,7 +454,7 @@ def cmd_pdf2img(
     fmt: str = typer.Option("png", "--fmt", help="png | jpeg | tiff"),
 ):
     """[bold]Convert PDF pages[/bold] to image files."""
-    from docmax.converter import pdf_to_images
+    from docmax-demo.converter import pdf_to_images
     pdf_to_images(input_file, output_dir, dpi, fmt)
 
 
@@ -468,7 +468,7 @@ def cmd_text(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Extract text[/bold] from a PDF."""
-    from docmax.extractor import extract_text
+    from docmax-demo.extractor import extract_text
     extract_text(input_file, output)
 
 
@@ -478,7 +478,7 @@ def cmd_images(
     output_dir: Optional[Path] = typer.Option(None, "-o", "--output-dir"),
 ):
     """[bold]Extract embedded images[/bold] from a PDF."""
-    from docmax.extractor import extract_images
+    from docmax-demo.extractor import extract_images
     extract_images(input_file, output_dir)
 
 
@@ -488,7 +488,7 @@ def cmd_metadata(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Display metadata[/bold] from a PDF."""
-    from docmax.extractor import extract_metadata
+    from docmax-demo.extractor import extract_metadata
     extract_metadata(input_file, output)
 
 
@@ -499,7 +499,7 @@ def cmd_tables(
     fmt: str = typer.Option("csv", "--fmt", help="csv | xlsx | json"),
 ):
     """[bold]Extract tables[/bold] from a PDF."""
-    from docmax.extractor import extract_tables
+    from docmax-demo.extractor import extract_tables
     extract_tables(input_file, output, fmt)
 
 
@@ -513,7 +513,7 @@ def cmd_enhance(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Enhance[/bold] image contrast, brightness, and sharpness."""
-    from docmax.processor import enhance
+    from docmax-demo.processor import enhance
     enhance(input_file, output)
 
 
@@ -523,7 +523,7 @@ def cmd_deskew(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Correct the skew angle[/bold] of a scanned image."""
-    from docmax.processor import deskew
+    from docmax-demo.processor import deskew
     deskew(input_file, output)
 
 
@@ -533,7 +533,7 @@ def cmd_denoise(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]Remove noise[/bold] from an image."""
-    from docmax.processor import denoise
+    from docmax-demo.processor import denoise
     denoise(input_file, output)
 
 
@@ -546,7 +546,7 @@ def cmd_resize(
     scale: Optional[float] = typer.Option(None, "--scale"),
 ):
     """[bold]Resize[/bold] an image by width, height, or scale factor."""
-    from docmax.processor import resize
+    from docmax-demo.processor import resize
     resize(input_file, width, height, scale, output)
 
 
@@ -556,7 +556,7 @@ def cmd_preprocess(
     output: Optional[Path] = typer.Option(None, "-o", "--output"),
 ):
     """[bold]OCR preprocessing pipeline[/bold]: orientation → contrast → denoise → binarize."""
-    from docmax.processor import preprocess_for_ocr
+    from docmax-demo.processor import preprocess_for_ocr
     preprocess_for_ocr(input_file, output)
 
 
@@ -576,7 +576,7 @@ def cmd_batch(
     no_recursive: bool = typer.Option(False, "--no-recursive"),
 ):
     """[bold]Batch process[/bold] a directory of files."""
-    from docmax.batch import batch_with_ocr, batch_compress, batch_convert
+    from docmax-demo.batch import batch_with_ocr, batch_compress, batch_convert
     if ocr:
         batch_with_ocr(directory, lang, fmt, not no_recursive, workers)
     elif compress:

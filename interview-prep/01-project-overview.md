@@ -1,18 +1,18 @@
 # 01 — Project Overview
 
-> Load this file for: "Tell me about a project you've built", "What does DocMax do?", opening pitch questions.
+> Load this file for: "Tell me about a project you've built", "What does docmax-demo do?", opening pitch questions.
 
 ---
 
 ## Elevator pitch (30 seconds)
 
-DocMax is an **offline-first, all-in-one document processing CLI** published on PyPI. It gives developers and power users a single command (`docmax`) to merge PDFs, run OCR, convert between document formats, extract content, preprocess images, batch-process entire folders, and even watch a directory for new files and process them automatically — all without an internet connection, a GUI, or a paid service.
+docmax-demo is an **offline-first, all-in-one document processing CLI** published on PyPI. It gives developers and power users a single command (`docmax-demo`) to merge PDFs, run OCR, convert between document formats, extract content, preprocess images, batch-process entire folders, and even watch a directory for new files and process them automatically — all without an internet connection, a GUI, or a paid service.
 
 ---
 
 ## Problem it solves
 
-Most document tools are either cloud-based (privacy risk, requires internet), GUI-only (not scriptable), or single-purpose (one tool for OCR, another for compression, another for conversion). DocMax unifies 30+ operations under one CLI with a guided TUI for non-technical use and a full subcommand API for scripting.
+Most document tools are either cloud-based (privacy risk, requires internet), GUI-only (not scriptable), or single-purpose (one tool for OCR, another for compression, another for conversion). docmax-demo unifies 30+ operations under one CLI with a guided TUI for non-technical use and a full subcommand API for scripting.
 
 ---
 
@@ -32,7 +32,7 @@ Most document tools are either cloud-based (privacy risk, requires internet), GU
 | Document conversion | Pandoc (subprocess) |
 | Parallel processing | `concurrent.futures.ThreadPoolExecutor` |
 | Directory watching | [watchdog](https://pypi.org/project/watchdog/) |
-| Config persistence | JSON at `~/.docmax/config.json` |
+| Config persistence | JSON at `~/.docmax-demo/config.json` |
 | Packaging | [pyproject.toml](../pyproject.toml) with optional extras |
 
 ---
@@ -81,8 +81,8 @@ Most document tools are either cloud-based (privacy risk, requires internet), GU
 - Watch mode: monitor a folder, auto-process new files on arrival
 
 ### Setup & Diagnostics
-- `docmax setup` — cross-platform auto-install of all external tools
-- `docmax doctor` — health-check table showing install status and paths
+- `docmax-demo setup` — cross-platform auto-install of all external tools
+- `docmax-demo doctor` — health-check table showing install status and paths
 
 ---
 
@@ -90,25 +90,25 @@ Most document tools are either cloud-based (privacy risk, requires internet), GU
 
 ```bash
 # Core (always works)
-pip install docmax
+pip install docmax-demo
 
 # With OCR support
-pip install "docmax[ocr]"
+pip install "docmax-demo[ocr]"
 
 # With advanced image processing
-pip install "docmax[image]"
+pip install "docmax-demo[image]"
 
 # With table extraction
-pip install "docmax[tables]"
+pip install "docmax-demo[tables]"
 
 # Everything
-pip install "docmax[full]"
+pip install "docmax-demo[full]"
 ```
 
 External tools (Tesseract, Ghostscript, Pandoc, Poppler) are auto-installed via:
 ```bash
-docmax setup
-docmax doctor   # verify
+docmax-demo setup
+docmax-demo doctor   # verify
 ```
 
 ---
@@ -117,18 +117,18 @@ docmax doctor   # verify
 
 ```bash
 # Launch interactive TUI (arrow keys + Enter)
-docmax
+docmax-demo
 
 # Direct CLI subcommands
-docmax merge a.pdf b.pdf -o merged.pdf
-docmax compress large.pdf --preset ebook
-docmax ocr scan.png --lang eng --fmt json
-docmax searchable scanned.pdf
-docmax convert notes.md pdf
-docmax batch ./invoices --ocr --workers 8
-docmax watch ./incoming --ocr
-docmax setup
-docmax doctor
+docmax-demo merge a.pdf b.pdf -o merged.pdf
+docmax-demo compress large.pdf --preset ebook
+docmax-demo ocr scan.png --lang eng --fmt json
+docmax-demo searchable scanned.pdf
+docmax-demo convert notes.md pdf
+docmax-demo batch ./invoices --ocr --workers 8
+docmax-demo watch ./incoming --ocr
+docmax-demo setup
+docmax-demo doctor
 ```
 
 ---
@@ -138,6 +138,6 @@ docmax doctor
 - 29 Python source files
 - ~2,500 lines of application code (estimated)
 - 199 functions, 7 classes
-- Published to [PyPI](https://pypi.org/project/docmax/)
+- Published to [PyPI](https://pypi.org/project/docmax-demo/)
 - CI/CD via GitHub Actions (`publish.yml`)
 - MIT licensed

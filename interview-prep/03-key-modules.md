@@ -71,7 +71,7 @@ _pdf_to_images()  →  preprocess_for_ocr()  →  _run_tesseract()  →  _write_
 - `flip_horizontal`, `flip_vertical`, `convert_image`
 - `compress_image` — Pillow save with `quality=` param
 - `add_text_watermark` — PIL `ImageDraw.text()` with configurable position/color/opacity
-- `remove_background` — `rembg.remove()` (requires `docmax[image]` extra)
+- `remove_background` — `rembg.remove()` (requires `docmax-demo[image]` extra)
 
 **`merge` — most notable edge cases handled:**
 - Each file validated for existence before opening
@@ -134,12 +134,12 @@ Key design points:
 **Responsibility:** Monitor a folder for new files and auto-process them.
 
 **Classes:**
-- `_DocMaxHandler` — Stores action/lang/fmt state and a `_seen: set` for deduplication. Method `dispatch(path)` routes each new file to the right operation.
+- `_docmax-demoHandler` — Stores action/lang/fmt state and a `_seen: set` for deduplication. Method `dispatch(path)` routes each new file to the right operation.
 - `_WatchdogBridge(FileSystemEventHandler)` — Adapter that maps watchdog's `on_created` / `on_moved` events to `handler_state.dispatch(path)`. Defined inline inside `watch()`.
 
 **`watch()` function flow:**
 1. Import watchdog (raises helpful error if not installed)
-2. Create `_DocMaxHandler` with the requested action
+2. Create `_docmax-demoHandler` with the requested action
 3. Create `_WatchdogBridge` (inner class) that delegates to handler
 4. Start `Observer`, schedule bridge on directory
 5. `while True: time.sleep(1)` — blocks until Ctrl+C
@@ -149,7 +149,7 @@ Key design points:
 
 **Debounce:** `time.sleep(WATCH_DEBOUNCE_SECONDS)` (default: 0.5s) is called inside `dispatch()` before processing, so files that are still being written are allowed to settle.
 
-**Self-loop prevention:** Files output by DocMax itself (ending in `_searchable`, `_compressed`, `_ocr`, etc.) are explicitly ignored to prevent infinite processing loops.
+**Self-loop prevention:** Files output by docmax-demo itself (ending in `_searchable`, `_compressed`, `_ocr`, etc.) are explicitly ignored to prevent infinite processing loops.
 
 ---
 
@@ -195,12 +195,12 @@ DOCX → MD:        pandoc input.docx -o output.md
 
 ## `config_manager.py` — Persistent Config
 
-**Responsibility:** Read/write `~/.docmax/config.json`. The single source of truth for tool paths and user preferences.
+**Responsibility:** Read/write `~/.docmax-demo/config.json`. The single source of truth for tool paths and user preferences.
 
 **Pattern used:** Every function calls `load_config()` (reads from disk), modifies the dict if needed, then calls `save_config()`. No in-memory caching — reads are cheap (JSON < 1KB).
 
 ```python
-CONFIG_DIR  = Path.home() / ".docmax"
+CONFIG_DIR  = Path.home() / ".docmax-demo"
 CONFIG_FILE = CONFIG_DIR / "config.json"
 
 def load_config() -> dict:          # read JSON, return {} on any error

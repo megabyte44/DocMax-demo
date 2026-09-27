@@ -1,18 +1,18 @@
 <div align="center">
 
-# ◆ DocMax
+# ◆ docmax-demo
 
 **Forge your documents from the terminal.**
 
-[![PyPI version](https://img.shields.io/pypi/v/docmax?color=00d8ff&label=PyPI&logo=pypi&logoColor=white)](https://pypi.org/project/docmax/)
-[![Python](https://img.shields.io/pypi/pyversions/docmax?color=0088e0&logo=python&logoColor=white)](https://pypi.org/project/docmax/)
+[![PyPI version](https://img.shields.io/pypi/v/docmax-demo?color=00d8ff&label=PyPI&logo=pypi&logoColor=white)](https://pypi.org/project/docmax-demo/)
+[![Python](https://img.shields.io/pypi/pyversions/docmax-demo?color=0088e0&logo=python&logoColor=white)](https://pypi.org/project/docmax-demo/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/pypi/dm/docmax?color=0060d0)](https://pypi.org/project/docmax/)
-[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)](https://pypi.org/project/docmax/)
+[![Downloads](https://img.shields.io/pypi/dm/docmax-demo?color=0060d0)](https://pypi.org/project/docmax-demo/)
+[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey)](https://pypi.org/project/docmax-demo/)
 
-![DocMax Banner](docs/images/banner.png)
+![docmax-demo Banner](docs/images/banner.png)
 
-DocMax is an **all-in-one, offline-first document processing CLI** published on [PyPI](https://pypi.org/project/docmax/).  
+docmax-demo is an **all-in-one, offline-first document processing CLI** published on [PyPI](https://pypi.org/project/docmax-demo/).  
 Merge PDFs, run OCR, convert formats, batch-process folders, and more — all from a single, beautiful terminal interface.
 
 [Installation](#installation) • [Usage](#usage) • [Features](#features) • [Screenshots](#screenshots) • [Contributing](#contributing)
@@ -27,8 +27,8 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 <tr>
 <td colspan="2" align="center">
 <b>Main Menu</b><br/>
-<img src="docs/images/tui-main-menu.svg" width="100%" alt="DocMax main menu — 10 tool categories, arrow-key navigation"/>
-<sub>Launch with <code>docmax</code> — arrow-key navigation, guided workflows for every tool</sub>
+<img src="docs/images/tui-main-menu.svg" width="100%" alt="docmax-demo main menu — 10 tool categories, arrow-key navigation"/>
+<sub>Launch with <code>docmax-demo</code> — arrow-key navigation, guided workflows for every tool</sub>
 </td>
 </tr>
 <tr>
@@ -58,8 +58,8 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 <tr>
 <td colspan="2" align="center">
 <b>System Doctor</b><br/>
-<img src="docs/images/doctor-output.svg" width="80%" alt="docmax doctor output table"/>
-<sub><code>docmax doctor</code> — checks all external tools, shows paths and install status</sub>
+<img src="docs/images/doctor-output.svg" width="80%" alt="docmax-demo doctor output table"/>
+<sub><code>docmax-demo doctor</code> — checks all external tools, shows paths and install status</sub>
 </td>
 </tr>
 </table>
@@ -71,14 +71,14 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 
 | Feature | Command |
 |---|---|
-| Merge multiple PDFs | `docmax merge a.pdf b.pdf -o out.pdf` |
-| Split into pages | `docmax split report.pdf` |
-| Compress (Ghostscript) | `docmax compress large.pdf --preset ebook` |
-| Rotate pages | `docmax rotate file.pdf 90` |
-| Extract page range | `docmax pages file.pdf 1-5` |
-| Overlay watermark | `docmax watermark file.pdf logo.png` |
-| Encrypt with password | `docmax encrypt file.pdf` |
-| Decrypt | `docmax decrypt protected.pdf` |
+| Merge multiple PDFs | `docmax-demo merge a.pdf b.pdf -o out.pdf` |
+| Split into pages | `docmax-demo split report.pdf` |
+| Compress (Ghostscript) | `docmax-demo compress large.pdf --preset ebook` |
+| Rotate pages | `docmax-demo rotate file.pdf 90` |
+| Extract page range | `docmax-demo pages file.pdf 1-5` |
+| Overlay watermark | `docmax-demo watermark file.pdf logo.png` |
+| Encrypt with password | `docmax-demo encrypt file.pdf` |
+| Decrypt | `docmax-demo decrypt protected.pdf` |
 
 </details>
 
@@ -87,12 +87,12 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 
 | Feature | Command |
 |---|---|
-| OCR an image | `docmax ocr scan.png` |
-| OCR a PDF | `docmax ocr scan.pdf` |
-| Output as JSON or Markdown | `docmax ocr scan.pdf --fmt json` |
-| Multi-language OCR | `docmax ocr scan.png --lang eng+hin` |
-| Make scanned PDF searchable | `docmax searchable scan.pdf` |
-| Batch OCR a folder | `docmax batch-ocr invoices/` |
+| OCR an image | `docmax-demo ocr scan.png` |
+| OCR a PDF | `docmax-demo ocr scan.pdf` |
+| Output as JSON or Markdown | `docmax-demo ocr scan.pdf --fmt json` |
+| Multi-language OCR | `docmax-demo ocr scan.png --lang eng+hin` |
+| Make scanned PDF searchable | `docmax-demo searchable scan.pdf` |
+| Batch OCR a folder | `docmax-demo batch-ocr invoices/` |
 
 </details>
 
@@ -101,12 +101,12 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 
 | Feature | Command |
 |---|---|
-| Markdown → PDF | `docmax convert notes.md pdf` |
-| Markdown → DOCX | `docmax convert notes.md docx` |
-| DOCX → PDF | `docmax convert report.docx pdf` |
-| DOCX → Markdown | `docmax convert report.docx md` |
-| Images → PDF | `docmax img2pdf scans/` |
-| PDF → Images | `docmax pdf2img report.pdf --dpi 300 --fmt png` |
+| Markdown → PDF | `docmax-demo convert notes.md pdf` |
+| Markdown → DOCX | `docmax-demo convert notes.md docx` |
+| DOCX → PDF | `docmax-demo convert report.docx pdf` |
+| DOCX → Markdown | `docmax-demo convert report.docx md` |
+| Images → PDF | `docmax-demo img2pdf scans/` |
+| PDF → Images | `docmax-demo pdf2img report.pdf --dpi 300 --fmt png` |
 
 </details>
 
@@ -115,10 +115,10 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 
 | Feature | Command |
 |---|---|
-| Extract text | `docmax text report.pdf` |
-| Extract embedded images | `docmax images report.pdf` |
-| Show / save metadata | `docmax metadata report.pdf -o meta.json` |
-| Extract tables (CSV/XLSX/JSON) | `docmax tables invoice.pdf --fmt xlsx` |
+| Extract text | `docmax-demo text report.pdf` |
+| Extract embedded images | `docmax-demo images report.pdf` |
+| Show / save metadata | `docmax-demo metadata report.pdf -o meta.json` |
+| Extract tables (CSV/XLSX/JSON) | `docmax-demo tables invoice.pdf --fmt xlsx` |
 
 </details>
 
@@ -127,11 +127,11 @@ Merge PDFs, run OCR, convert formats, batch-process folders, and more — all fr
 
 | Feature | Command |
 |---|---|
-| Enhance (contrast + sharpness) | `docmax enhance scan.png` |
-| Fix skewed scans (deskew) | `docmax deskew scan.png` |
-| Remove noise | `docmax denoise scan.png` |
-| Resize | `docmax resize photo.png --width 800` |
-| Full OCR preprocessing pipeline | `docmax preprocess scan.png` |
+| Enhance (contrast + sharpness) | `docmax-demo enhance scan.png` |
+| Fix skewed scans (deskew) | `docmax-demo deskew scan.png` |
+| Remove noise | `docmax-demo denoise scan.png` |
+| Resize | `docmax-demo resize photo.png --width 800` |
+| Full OCR preprocessing pipeline | `docmax-demo preprocess scan.png` |
 
 Interactive image tools (resize, crop, rotate, flip, convert format, watermark, remove background) are also available in the TUI.
 
@@ -142,13 +142,13 @@ Interactive image tools (resize, crop, rotate, flip, convert format, watermark, 
 
 | Feature | Command |
 |---|---|
-| Batch OCR with workers | `docmax batch ./docs --ocr --workers 8` |
-| Batch compress PDFs | `docmax batch ./pdfs --compress` |
-| Batch convert to Markdown | `docmax batch ./docs --convert md` |
-| Auto-OCR watched folder | `docmax watch ./incoming --ocr` |
-| Auto-compress watched folder | `docmax watch ./uploads --compress` |
-| Auto-make-searchable | `docmax watch ./scans --searchable` |
-| Auto-preprocess images | `docmax watch ./images --preprocess` |
+| Batch OCR with workers | `docmax-demo batch ./docs --ocr --workers 8` |
+| Batch compress PDFs | `docmax-demo batch ./pdfs --compress` |
+| Batch convert to Markdown | `docmax-demo batch ./docs --convert md` |
+| Auto-OCR watched folder | `docmax-demo watch ./incoming --ocr` |
+| Auto-compress watched folder | `docmax-demo watch ./uploads --compress` |
+| Auto-make-searchable | `docmax-demo watch ./scans --searchable` |
+| Auto-preprocess images | `docmax-demo watch ./images --preprocess` |
 
 </details>
 
@@ -156,8 +156,8 @@ Interactive image tools (resize, crop, rotate, flip, convert format, watermark, 
 <summary><strong>⚙️ Setup & Diagnostics</strong></summary>
 
 ```bash
-docmax setup    # Auto-install external dependencies (Tesseract, Ghostscript, Pandoc, Poppler)
-docmax doctor   # Check which tools are installed and configured
+docmax-demo setup    # Auto-install external dependencies (Tesseract, Ghostscript, Pandoc, Poppler)
+docmax-demo doctor   # Check which tools are installed and configured
 ```
 
 </details>
@@ -169,7 +169,7 @@ docmax doctor   # Check which tools are installed and configured
 ### Core (always works)
 
 ```bash
-pip install docmax
+pip install docmax-demo
 ```
 
 ### Optional extras
@@ -178,21 +178,21 @@ Install only what you need:
 
 ```bash
 # OCR support (Tesseract + pdf2image)
-pip install "docmax[ocr]"
+pip install "docmax-demo[ocr]"
 
 # Advanced image processing (OpenCV, rembg background removal)
-pip install "docmax[image]"
+pip install "docmax-demo[image]"
 
 # Table extraction from PDFs (pdfplumber, pandas, openpyxl)
-pip install "docmax[tables]"
+pip install "docmax-demo[tables]"
 
 # Everything
-pip install "docmax[full]"
+pip install "docmax-demo[full]"
 ```
 
 ### External dependencies
 
-Some features require system tools. Run `docmax setup` to auto-install them, or follow the manual links below.
+Some features require system tools. Run `docmax-demo setup` to auto-install them, or follow the manual links below.
 
 | Tool | Purpose | Auto-install |
 |---|---|:---:|
@@ -203,8 +203,8 @@ Some features require system tools. Run `docmax setup` to auto-install them, or 
 
 ```bash
 # Install & verify in two steps
-docmax setup
-docmax doctor
+docmax-demo setup
+docmax-demo doctor
 ```
 
 ---
@@ -216,23 +216,23 @@ docmax doctor
 Launch the full interactive terminal UI with no arguments:
 
 ```bash
-docmax
+docmax-demo
 ```
 
-![DocMax TUI](docs/images/tui-main-menu.svg)
+![docmax-demo TUI](docs/images/tui-main-menu.svg)
 
 Navigate with arrow keys, select with Enter. Every tool section has its own guided workflow.
 
 ### Command-Line Interface
 
-DocMax also works as a traditional CLI — every feature is a subcommand:
+docmax-demo also works as a traditional CLI — every feature is a subcommand:
 
 ```bash
 # Show all commands
-docmax --help
+docmax-demo --help
 
 # Show version
-docmax --version
+docmax-demo --version
 ```
 
 ---
@@ -267,7 +267,7 @@ docmax --version
 ### System Doctor
 
 ![Doctor Output](docs/images/doctor-output.svg)
-> *`docmax doctor` showing installed tool status and paths.*
+> *`docmax-demo doctor` showing installed tool status and paths.*
 
 ---
 
@@ -280,11 +280,11 @@ docmax --version
 ## 🗂 Project Structure
 
 ```
-docmax/
+docmax-demo/
 ├── cli.py                  ← Typer CLI entry point & dict-driven dispatch
 ├── menu.py                 ← All menu definitions (*_MENU dicts + menu functions)
 ├── config.py               ← Global defaults (DPI, presets, paths)
-├── config_manager.py       ← Persistent config (~/.docmax/config.json)
+├── config_manager.py       ← Persistent config (~/.docmax-demo/config.json)
 ├── banner.py               ← Rich ASCII banner
 ├── theme.py                ← Rich colour theme
 ├── loading.py              ← Spinner / Loader context manager
@@ -331,14 +331,14 @@ Please keep PRs focused and describe what problem they solve.
 
 ## 📜 License
 
-DocMax is released under the [MIT License](LICENSE).  
-© Punith Naidu and DocMax Contributors.
+docmax-demo is released under the [MIT License](LICENSE).  
+© Punith Naidu and docmax-demo Contributors.
 
 ---
 
 <div align="center">
 
-**[PyPI](https://pypi.org/project/docmax/) · [Issues](https://github.com/your-org/docmax/issues) · [Discussions](https://github.com/your-org/docmax/discussions)**
+**[PyPI](https://pypi.org/project/docmax-demo/) · [Issues](https://github.com/your-org/docmax-demo/issues) · [Discussions](https://github.com/your-org/docmax-demo/discussions)**
 
 *Made with ♥ and Rich, Typer, and Questionary.*
 

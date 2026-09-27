@@ -2,8 +2,8 @@ import questionary
 from pathlib import Path
 from rich.console import Console
 
-from docmax.menu import image_menu
-from docmax.operations import (
+from docmax-demo.menu import image_menu
+from docmax-demo.operations import (
     resize_image,
     convert_image,
     compress_image,
@@ -15,7 +15,7 @@ from docmax.operations import (
     flip_vertical
 )
 
-from docmax.workflows.common import (
+from docmax-demo.workflows.common import (
     failure_screen,
     select_single_image,
     get_output_name,
@@ -283,7 +283,7 @@ def watermark_image_workflow():
 
     text = questionary.text(
         "Watermark text:",
-        default="DocMax"
+        default="docmax-demo"
     ).ask()
 
     output = get_output_name(

@@ -1,5 +1,5 @@
 """
-DocMax Image Processing Module
+docmax-demo Image Processing Module
 Handles: enhance, deskew, denoise, resize, and the full OCR preprocessing pipeline
 """
 
@@ -8,8 +8,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional, Tuple
 
-from docmax.utils import abort, info, success, warn
-from docmax.config import DEFAULT_COMPRESS_QUALITY
+from docmax-demo.utils import abort, info, success, warn
+from docmax-demo.config import DEFAULT_COMPRESS_QUALITY
 
 
 # ---------------------------------------------------------------------------
@@ -37,7 +37,7 @@ def _load_cv2(path: Path):
         abort(
             "OpenCV not installed.\n"
             "Run:\n"
-            "pip install docmax[image]"
+            "pip install docmax-demo[image]"
         )
     img = cv2.imread(str(path))
     if img is None:
@@ -99,7 +99,7 @@ def deskew(input_path: Path, output: Optional[Path] = None) -> None:
         abort(
             "OpenCV not installed.\n"
             "Run:\n"
-            "pip install docmax[image]"
+            "pip install docmax-demo[image]"
         )
 
     img = _load_cv2(input_path)
@@ -138,7 +138,7 @@ def denoise(input_path: Path, output: Optional[Path] = None) -> None:
         abort(
             "OpenCV not installed.\n"
             "Run:\n"
-            "pip install docmax[image]"
+            "pip install docmax-demo[image]"
         )
     img = _load_cv2(input_path)
 
@@ -215,7 +215,7 @@ def preprocess_for_ocr(input_path: Path, output: Optional[Path] = None) -> Path:
         import numpy as np
         from PIL import Image, ImageEnhance, ImageOps
     except ImportError:
-        abort("OpenCV and Pillow are required.\n" "Run:\n" "pip install docmax[image]")
+        abort("OpenCV and Pillow are required.\n" "Run:\n" "pip install docmax-demo[image]")
 
     if not input_path.exists():
         abort(f"File not found: {input_path}")

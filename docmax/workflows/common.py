@@ -4,7 +4,7 @@ import questionary
 from rich.console import Console
 from rich.panel import Panel
 from rich.errors import LiveError
-from docmax.utils import save_recent_folder, load_recent_folder
+from docmax-demo.utils import save_recent_folder, load_recent_folder
 
 console = Console()
 def show_file_info(path):

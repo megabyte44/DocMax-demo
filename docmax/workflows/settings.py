@@ -2,9 +2,9 @@ import questionary
 from rich.console import Console
 from rich.table import Table
 
-from docmax.setup import setup_dependencies
-from docmax.dependencies import doctor
-from docmax.config_manager import (
+from docmax-demo.setup import setup_dependencies
+from docmax-demo.dependencies import doctor
+from docmax-demo.config_manager import (
     load_config,
     save_config,
 )

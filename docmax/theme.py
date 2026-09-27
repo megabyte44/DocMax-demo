@@ -1,6 +1,6 @@
 from rich.theme import Theme
 
-DocMax_THEME = Theme(
+docmax-demo_THEME = Theme(
     {
         "title": "bold cyan",
         "success": "bold green",

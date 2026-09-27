@@ -49,7 +49,7 @@ Both Ghostscript and Pandoc are external binaries:
 - **Ghostscript:** No stable, maintained Python binding. `ghostscript` PyPI package exists but is unmaintained. The CLI is the stable interface.
 - **Pandoc:** Haskell binary. `pypandoc` exists but ties you to a specific Pandoc version and adds install complexity. Direct subprocess gives full flag access.
 
-**Tradeoff:** Subprocess means Ghostscript/Pandoc must be installed separately. This is handled by `docmax setup` (auto-installer) and `docmax doctor` (health checker) so users aren't left guessing.
+**Tradeoff:** Subprocess means Ghostscript/Pandoc must be installed separately. This is handled by `docmax-demo setup` (auto-installer) and `docmax-demo doctor` (health checker) so users aren't left guessing.
 
 ---
 
@@ -74,7 +74,7 @@ tables = ["pdfplumber", "pandas", "openpyxl"]
 full   = [all of the above]
 ```
 
-**Why:** `opencv-python` (~50MB), `rembg` (~200MB with model weights), and `pandas+openpyxl` are heavy. A user who only needs PDF merge/split shouldn't pull them in. Optional extras let the base `pip install docmax` stay under 10MB.
+**Why:** `opencv-python` (~50MB), `rembg` (~200MB with model weights), and `pandas+openpyxl` are heavy. A user who only needs PDF merge/split shouldn't pull them in. Optional extras let the base `pip install docmax-demo` stay under 10MB.
 
 **Tradeoff:** If a user runs a command that needs a missing extra, they get a clear import error with install instructions (handled by `abort()` messages in each function that does a late import).
 
@@ -82,12 +82,12 @@ full   = [all of the above]
 
 ## Config as flat JSON (no SQLite, no TOML)
 
-`~/.docmax/config.json` stores tool paths and preferences. Alternatives considered:
+`~/.docmax-demo/config.json` stores tool paths and preferences. Alternatives considered:
 - **SQLite:** Overkill for ~5 key-value pairs. Adds `sqlite3` dependency complexity.
 - **TOML:** Good choice, but `tomllib` (stdlib) is read-only; writes need `tomli-w` or `tomlkit`. JSON is read/write with just the stdlib.
 - **Platform-specific registry/plist:** Not cross-platform.
 
-**Pattern:** Every read calls `load_config()` from disk (no in-memory cache). Rationale: the config is small (<1KB), and caching would cause stale-path bugs after `docmax setup` updates a tool path mid-session.
+**Pattern:** Every read calls `load_config()` from disk (no in-memory cache). Rationale: the config is small (<1KB), and caching would cause stale-path bugs after `docmax-demo setup` updates a tool path mid-session.
 
 ---
 
@@ -96,7 +96,7 @@ full   = [all of the above]
 Two separate mechanisms prevent double-processing in watch mode:
 
 1. **`_seen: set`** — Added before any sleep. Prevents the same path from being dispatched twice if both `on_created` and `on_moved` fire.
-2. **`time.sleep(WATCH_DEBOUNCE_SECONDS)`** — Added inside `dispatch()` before processing. Lets the file writer finish before DocMax opens the file. Without this, OCR on a file that's still being written produces garbage output.
+2. **`time.sleep(WATCH_DEBOUNCE_SECONDS)`** — Added inside `dispatch()` before processing. Lets the file writer finish before docmax-demo opens the file. Without this, OCR on a file that's still being written produces garbage output.
 
 **Why not a proper debounce timer (e.g., threading.Timer)?** A fixed sleep is simpler and sufficient — document files are rarely large enough that the write takes more than 0.5 seconds. A proper debounce timer would add complexity for marginal benefit.
 

@@ -3,13 +3,13 @@ from pathlib import Path
 import questionary
 from rich.console import Console
 
-from docmax.converter import (
+from docmax-demo.converter import (
     convert,
     images_to_pdf,
     pdf_to_images,
 )
-from docmax.menu import conversion_menu
-from docmax.workflows.common import success_screen
+from docmax-demo.menu import conversion_menu
+from docmax-demo.workflows.common import success_screen
 
 console = Console()
 

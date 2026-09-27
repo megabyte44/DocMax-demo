@@ -2,7 +2,7 @@ from pathlib import Path
 
 import questionary
 
-from docmax.watcher import watch
+from docmax-demo.watcher import watch
 
 
 def auto_ocr_workflow():

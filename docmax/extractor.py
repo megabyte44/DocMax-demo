@@ -1,5 +1,5 @@
 """
-DocMax Extraction Module
+docmax-demo Extraction Module
 Handles: text, images, metadata, and table extraction from PDFs
 """
 
@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
-from docmax.utils import abort, console, ensure_parent, info, success, warn
+from docmax-demo.utils import abort, console, ensure_parent, info, success, warn
 
 
 # ---------------------------------------------------------------------------

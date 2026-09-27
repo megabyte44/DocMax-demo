@@ -1,8 +1,8 @@
 """
-DocMax Config Manager — single source of truth.
+docmax-demo Config Manager — single source of truth.
 
-All persistent state lives in ~/.docmax/config.json.
-(Previously split between cwd/.docmax.json and ~/.docmax/config.json — now unified.)
+All persistent state lives in ~/.docmax-demo/config.json.
+(Previously split between cwd/.docmax-demo.json and ~/.docmax-demo/config.json — now unified.)
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-CONFIG_DIR = Path.home() / ".docmax"
+CONFIG_DIR = Path.home() / ".docmax-demo"
 CONFIG_FILE = CONFIG_DIR / "config.json"
 
 

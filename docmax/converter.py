@@ -1,5 +1,5 @@
 """
-DocMax Conversion Module
+docmax-demo Conversion Module
 Handles: document format conversion (docx, pdf, md, html, txt), img2pdf, pdf2img
 """
 
@@ -11,10 +11,10 @@ from typing import List, Optional
 
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from docmax.utils import (
+from docmax-demo.utils import (
     abort, console, ensure_parent, info, require_pandoc, success, warn,
 )
-from docmax.config import DEFAULT_IMAGE_DPI, SUPPORTED_IMAGE_EXTS
+from docmax-demo.config import DEFAULT_IMAGE_DPI, SUPPORTED_IMAGE_EXTS
 
 
 PANDOC_FORMAT_MAP = {
@@ -58,7 +58,7 @@ def convert(
     pandoc_from = _ext_to_pandoc_format(input_path.suffix)
 
     # Resolve pandoc binary (may be in saved config)
-    from docmax.config_manager import get_tool_path
+    from docmax-demo.config_manager import get_tool_path
     pandoc_bin = get_tool_path("pandoc") or "pandoc"
 
     cmd = [pandoc_bin, str(input_path), "-f", pandoc_from, "-t", pandoc_to, "-o", str(out)]
@@ -135,7 +135,7 @@ def pdf_to_images(
         abort(f"File not found: {input_path}")
 
     # Pass poppler_path if saved in config (important on Windows)
-    from docmax.config_manager import get_tool_path
+    from docmax-demo.config_manager import get_tool_path
     poppler_path_str = get_tool_path("poppler")
     poppler_path = str(Path(poppler_path_str).parent) if poppler_path_str else None
 

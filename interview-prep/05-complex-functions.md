@@ -117,23 +117,23 @@ This is the tool auto-discovery function — given a tool name (e.g., "tesseract
 
 ---
 
-## `watch()` + `_DocMaxHandler.dispatch()` — complexity 8+
+## `watch()` + `_docmax-demoHandler.dispatch()` — complexity 8+
 
-The interaction between `watch()`, `_WatchdogBridge`, and `_DocMaxHandler` involves three classes and two levels of delegation:
+The interaction between `watch()`, `_WatchdogBridge`, and `_docmax-demoHandler` involves three classes and two levels of delegation:
 
 ```
 watchdog Observer
     └─ schedules _WatchdogBridge (extends FileSystemEventHandler)
          └─ on_created / on_moved → calls handler_state.dispatch(path)
-              └─ _DocMaxHandler.dispatch(path)
+              └─ _docmax-demoHandler.dispatch(path)
                    ├─ dedup check (_seen set)
                    ├─ debounce sleep
-                   ├─ suffix filtering (ignore DocMax-generated files)
+                   ├─ suffix filtering (ignore docmax-demo-generated files)
                    ├─ extension filtering (only process supported exts)
                    └─ late-import + route to correct engine function
 ```
 
-**Why `_WatchdogBridge` is an inner class defined inside `watch()`:** It needs to close over `handler_state` (the `_DocMaxHandler` instance). Defining it inside `watch()` means no need to pass `handler_state` as a constructor arg or store it as a class attribute — the closure handles it cleanly.
+**Why `_WatchdogBridge` is an inner class defined inside `watch()`:** It needs to close over `handler_state` (the `_docmax-demoHandler` instance). Defining it inside `watch()` means no need to pass `handler_state` as a constructor arg or store it as a class attribute — the closure handles it cleanly.
 
 ---
 

@@ -1,5 +1,5 @@
 """
-DocMax Setup — cross-platform dependency installer.
+docmax-demo Setup — cross-platform dependency installer.
 
 Supports:
   Windows  → winget
@@ -23,7 +23,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
-from docmax.config_manager import set_tool_path
+from docmax-demo.config_manager import set_tool_path
 
 console = Console()
 
@@ -256,9 +256,9 @@ def _discover_and_save_all() -> dict[str, str | None]:
 def warn_missing_tools() -> None:
     """
     Called at CLI startup. If critical tools are not on PATH and not in config,
-    print a helpful one-time notice directing the user to run `docmax setup`.
+    print a helpful one-time notice directing the user to run `docmax-demo setup`.
     """
-    from docmax.dependencies import has_tesseract, has_ghostscript
+    from docmax-demo.dependencies import has_tesseract, has_ghostscript
 
     missing = []
     if not has_tesseract():
@@ -273,9 +273,9 @@ def warn_missing_tools() -> None:
     console.print(Panel(
         f"[bold yellow]Some external tools are not on your PATH:[/bold yellow]\n\n"
         f"{lines}\n\n"
-        f"Run [bold cyan]docmax setup[/bold cyan] to install them automatically,\n"
+        f"Run [bold cyan]docmax-demo setup[/bold cyan] to install them automatically,\n"
         f"or add them to your PATH if already installed.\n\n"
-        f"[dim]After installing, run [bold]docmax doctor[/bold] to verify.[/dim]",
+        f"[dim]After installing, run [bold]docmax-demo doctor[/bold] to verify.[/dim]",
         title="[yellow]⚠  Missing Dependencies[/yellow]",
         border_style="yellow",
     ))
@@ -287,7 +287,7 @@ def warn_missing_tools() -> None:
 
 def setup_dependencies() -> None:
     console.print(Panel(
-        f"[bold cyan]DocMax Setup[/bold cyan]\n"
+        f"[bold cyan]docmax-demo Setup[/bold cyan]\n"
         f"Detected OS: [bold]{SYSTEM}[/bold] ({platform.machine()})\n\n"
         f"This will install: Tesseract, Ghostscript, Poppler, Pandoc, MiKTeX",
         title="Setup",
@@ -309,7 +309,7 @@ def setup_dependencies() -> None:
             console.print(
                 "[yellow]Homebrew not found.[/yellow]\n"
                 "Install it first: [cyan]https://brew.sh[/cyan]\n"
-                "Then re-run [bold]docmax setup[/bold]."
+                "Then re-run [bold]docmax-demo setup[/bold]."
             )
             return
 
@@ -339,7 +339,7 @@ def setup_dependencies() -> None:
         console.print(
             f"\n[yellow]Note:[/yellow] {', '.join(missing)} not found on PATH yet.\n"
             "If you just installed them, you may need to [bold]restart your terminal[/bold]\n"
-            "or open a new shell so PATH updates take effect, then run [bold]docmax doctor[/bold]."
+            "or open a new shell so PATH updates take effect, then run [bold]docmax-demo doctor[/bold]."
         )
     else:
         console.print("\n[bold green]✓ Setup complete. All tools found and configured.[/bold green]")

@@ -1,6 +1,6 @@
 """
-DocMax PDF Workflows — all PDF tool workflows in one file.
-Each function is self-contained and calls operations from docmax.operations.
+docmax-demo PDF Workflows — all PDF tool workflows in one file.
+Each function is self-contained and calls operations from docmax-demo.operations.
 """
 
 from pathlib import Path
@@ -8,7 +8,7 @@ from pathlib import Path
 import questionary
 from rich.console import Console
 
-from docmax.operations import (
+from docmax-demo.operations import (
     merge,
     split,
     compress,
@@ -18,7 +18,7 @@ from docmax.operations import (
     encrypt,
     decrypt,
 )
-from docmax.workflows.common import (
+from docmax-demo.workflows.common import (
     select_multiple_pdfs,
     select_single_pdf,
     show_file_info,

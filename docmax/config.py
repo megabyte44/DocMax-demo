@@ -1,5 +1,5 @@
 """
-DocMax Configuration
+docmax-demo Configuration
 """
 
 import os
@@ -30,9 +30,9 @@ SUPPORTED_DOC_EXTS = {".docx", ".odt", ".rtf", ".txt", ".md", ".html"}
 WATCH_DEBOUNCE_SECONDS = 2
 
 # Paths
-DocMax_CONFIG_DIR = Path.home() / ".DocMax"
-DocMax_TEMP_DIR = DocMax_CONFIG_DIR / "tmp"
+docmax-demo_CONFIG_DIR = Path.home() / ".docmax-demo"
+docmax-demo_TEMP_DIR = docmax-demo_CONFIG_DIR / "tmp"
 
 # Ensure dirs exist
-DocMax_CONFIG_DIR.mkdir(exist_ok=True)
-DocMax_TEMP_DIR.mkdir(exist_ok=True)
+docmax-demo_CONFIG_DIR.mkdir(exist_ok=True)
+docmax-demo_TEMP_DIR.mkdir(exist_ok=True)

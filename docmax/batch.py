@@ -1,5 +1,5 @@
 """
-DocMax Batch Processing
+docmax-demo Batch Processing
 Handles: batch OCR, batch PDF compression, batch document conversion
 """
 
@@ -11,8 +11,8 @@ from typing import Callable, Iterable
 
 from rich.progress import Progress, TextColumn
 
-from docmax.config import SUPPORTED_DOC_EXTS, SUPPORTED_IMAGE_EXTS, SUPPORTED_PDF_EXTS
-from docmax.utils import (
+from docmax-demo.config import SUPPORTED_DOC_EXTS, SUPPORTED_IMAGE_EXTS, SUPPORTED_PDF_EXTS
+from docmax-demo.utils import (
     abort,
     collect_files,
     console,
@@ -92,10 +92,10 @@ def batch_with_ocr(
 
     def handler(path: Path) -> None:
         if path.suffix.lower() == ".pdf":
-            from docmax.engine import ocr_pdf
+            from docmax-demo.engine import ocr_pdf
             ocr_pdf(path, lang=lang, fmt=fmt)
         else:
-            from docmax.engine import ocr_image
+            from docmax-demo.engine import ocr_image
             ocr_image(path, lang=lang, fmt=fmt)
 
     errors = _run_parallel("Batch OCR", files, workers, handler)
@@ -121,7 +121,7 @@ def batch_compress(
     info(f"Found {len(files)} PDF(s) to compress...")
 
     def handler(path: Path) -> None:
-        from docmax.operations import compress
+        from docmax-demo.operations import compress
         compress(path)
 
     errors = _run_parallel("Batch compress", files, workers, handler)
@@ -148,7 +148,7 @@ def batch_convert(
     info(f"Found {len(files)} document(s) to convert...")
 
     def handler(path: Path) -> None:
-        from docmax.converter import convert
+        from docmax-demo.converter import convert
         convert(path, target_format)
 
     errors = _run_parallel("Batch convert", files, workers, handler)

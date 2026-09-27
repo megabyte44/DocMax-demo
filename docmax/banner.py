@@ -5,13 +5,13 @@ from rich.panel import Panel
 from rich.rule import Rule
 from rich.text import Text
 from rich import box
-from docmax import __version__ as VERSION
+from docmax-demo import __version__ as VERSION
 console = Console()
 
 
 def show_banner():
     # ── ASCII logo with cyan → indigo gradient ──────────────────
-    raw = Figlet(font="slant").renderText("DocMax")
+    raw = Figlet(font="slant").renderText("docmax-demo")
 
     palette = [
         "#00f0ff", "#00d5f5", "#00baeb",

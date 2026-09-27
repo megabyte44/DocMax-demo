@@ -8,22 +8,22 @@ def show_install_help():
 # 1. Build the text using from_markup so tags like [yellow] work perfectly
     content = Text.from_markup(
         f"""
-    [bold cyan]DocMax Installation Options[/bold cyan]
+    [bold cyan]docmax-demo Installation Options[/bold cyan]
 
     [yellow]Core:[/yellow]
-    pip install docmax
+    pip install docmax-demo
 
     [yellow]OCR Support:[/yellow]
-    pip install docmax{escape("[ocr]")}
+    pip install docmax-demo{escape("[ocr]")}
 
     [yellow]Image Processing:[/yellow]
-    pip install docmax{escape("[image]")}
+    pip install docmax-demo{escape("[image]")}
 
     [yellow]Table Extraction:[/yellow]
-    pip install docmax{escape("[tables]")}
+    pip install docmax-demo{escape("[tables]")}
 
     [yellow]Everything:[/yellow]
-    pip install docmax{escape("[full]")}
+    pip install docmax-demo{escape("[full]")}
     """
     )
 

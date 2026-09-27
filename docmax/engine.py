@@ -1,5 +1,5 @@
 """
-DocMax OCR Module
+docmax-demo OCR Module
 Handles: image OCR, PDF OCR, searchable PDF generation, batch OCR
 Output formats: TXT, JSON, Markdown
 """
@@ -13,11 +13,11 @@ from typing import List, Optional
 
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 
-from docmax.processor import preprocess_for_ocr
-from docmax.utils import (
+from docmax-demo.processor import preprocess_for_ocr
+from docmax-demo.utils import (
     abort, console, ensure_parent, info, require_tesseract, success, warn,
 )
-from docmax.config import DEFAULT_OCR_LANG, DEFAULT_OCR_DPI, SUPPORTED_IMAGE_EXTS
+from docmax-demo.config import DEFAULT_OCR_LANG, DEFAULT_OCR_DPI, SUPPORTED_IMAGE_EXTS
 
 
 # ---------------------------------------------------------------------------
@@ -26,13 +26,13 @@ from docmax.config import DEFAULT_OCR_LANG, DEFAULT_OCR_DPI, SUPPORTED_IMAGE_EXT
 
 def _get_tesseract_cmd() -> Optional[str]:
     """Return saved tesseract path if available, else let pytesseract find it."""
-    from docmax.config_manager import get_tool_path
+    from docmax-demo.config_manager import get_tool_path
     return get_tool_path("tesseract")
 
 
 def _get_poppler_path() -> Optional[str]:
     """Return poppler bin directory if saved (needed on Windows)."""
-    from docmax.config_manager import get_tool_path
+    from docmax-demo.config_manager import get_tool_path
     saved = get_tool_path("poppler")
     if saved:
         p = Path(saved)
@@ -217,7 +217,7 @@ def batch_ocr(
     fmt: str = "txt",
     recursive: bool = True,
 ) -> None:
-    from docmax.utils import collect_files
+    from docmax-demo.utils import collect_files
 
     if not directory.exists():
         abort(f"Directory not found: {directory}")

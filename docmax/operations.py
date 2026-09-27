@@ -1,5 +1,5 @@
 """
-DocMax PDF Operations
+docmax-demo PDF Operations
 Handles: merge, split, compress, rotate, page extraction, watermark, encrypt, decrypt
 """
 
@@ -13,11 +13,11 @@ from typing import List, Optional
 
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from docmax.utils import (
+from docmax-demo.utils import (
     abort, console, ensure_parent, ghostscript_bin,
     info, require_ghostscript, resolve_output, success, warn,
 )
-from docmax.config import DEFAULT_COMPRESS_PRESET
+from docmax-demo.config import DEFAULT_COMPRESS_PRESET
 from PIL import Image, ImageOps, ImageDraw, ImageFont
 
 # ---------------------------------------------------------------------------
@@ -432,7 +432,7 @@ def remove_background(input_path, output_path):
         abort(
             "Background removal requires extra packages.\n"
             "Run:\n"
-            "pip install docmax[image]"
+            "pip install docmax-demo[image]"
         )
 
     with open(input_path, "rb") as f:

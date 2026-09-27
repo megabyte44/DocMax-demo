@@ -1,5 +1,5 @@
 """
-DocMax OCR Workflows — all OCR tool workflows in one file.
+docmax-demo OCR Workflows — all OCR tool workflows in one file.
 """
 
 from pathlib import Path
@@ -7,9 +7,9 @@ from pathlib import Path
 import questionary
 from rich.console import Console
 
-from docmax.loading import Loader
-from docmax.dependencies import has_poppler, check_poppler, check_tesseract
-from docmax.workflows.common import (
+from docmax-demo.loading import Loader
+from docmax-demo.dependencies import has_poppler, check_poppler, check_tesseract
+from docmax-demo.workflows.common import (
     select_single_pdf,
     select_folder,
     get_output_name,
@@ -52,10 +52,10 @@ def ocr_workflow():
     try:
         with Loader("Running OCR..."):
             if input_file.suffix.lower() == ".pdf":
-                from docmax.engine import ocr_pdf
+                from docmax-demo.engine import ocr_pdf
                 ocr_pdf(input_file, output_path, lang, fmt)
             else:
-                from docmax.engine import ocr_image
+                from docmax-demo.engine import ocr_image
                 ocr_image(input_file, output_path, lang, fmt)
 
         success_screen(
@@ -91,7 +91,7 @@ def searchable_workflow():
 
     try:
         with Loader("Creating searchable PDF..."):
-            from docmax.engine import make_searchable_pdf
+            from docmax-demo.engine import make_searchable_pdf
             make_searchable_pdf(pdf, output_path, lang, 300)
 
         success_screen("Searchable PDF Created", output_file=output_path.name)
@@ -116,7 +116,7 @@ def batch_ocr_workflow():
 
     try:
         with Loader("Processing batch OCR..."):
-            from docmax.batch import batch_with_ocr
+            from docmax-demo.batch import batch_with_ocr
             batch_with_ocr(Path(folder), lang, fmt, True, workers)
 
         success_screen(
@@ -149,7 +149,7 @@ def tables_workflow():
     output = Path(f"{pdf.stem}_tables.{fmt}")
 
     try:
-        from docmax.extractor import extract_tables
+        from docmax-demo.extractor import extract_tables
         extract_tables(pdf, output)
         success_screen("Table Extraction Complete", output_file=output.name)
     except Exception as e:
@@ -161,5 +161,5 @@ def tables_workflow():
 # ---------------------------------------------------------------------------
 
 def ocr_settings_workflow():
-    from docmax.workflows.settings import settings_workflow
+    from docmax-demo.workflows.settings import settings_workflow
     settings_workflow()

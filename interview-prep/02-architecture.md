@@ -36,7 +36,7 @@
 ┌────────────────────▼─────────────────────────┐
 │           Infrastructure Layer               │
 │  utils.py          — abort/success/info/warn │
-│  config_manager.py — ~/.docmax/config.json   │
+│  config_manager.py — ~/.docmax-demo/config.json   │
 │  config.py         — global constants/defaults│
 │  dependencies.py   — tool detection + doctor │
 │  setup.py          — cross-platform installer│
@@ -84,7 +84,7 @@ main()
 ## Data flow — typical OCR operation
 
 ```
-User: docmax ocr scan.pdf --lang eng --fmt json
+User: docmax-demo ocr scan.pdf --lang eng --fmt json
          │
          ▼
 cli.py: cmd_ocr(input, lang, fmt)
@@ -114,7 +114,7 @@ engine.py: ocr_pdf(input_path, lang, fmt)
 ## Data flow — batch processing
 
 ```
-docmax batch ./invoices --ocr --workers 8
+docmax-demo batch ./invoices --ocr --workers 8
          │
          ▼
 cli.py: cmd_batch()
@@ -159,7 +159,7 @@ setup ──► dependencies
 
 ## Configuration persistence
 
-Config lives at `~/.docmax/config.json`. Keys:
+Config lives at `~/.docmax-demo/config.json`. Keys:
 - `tool_tesseract`, `tool_ghostscript`, `tool_pandoc`, `tool_poppler` — absolute paths to discovered binaries
 - `recent_folder` — last used folder (surfaced in TUI file picker)
 - `pref_*` — arbitrary user preferences
