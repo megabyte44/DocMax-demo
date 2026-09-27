@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "docmax-demo"
-version = "2.1.0"
+version = "2.1.1"
 description = "docmax-demo — Unified Document Processing CLI. Forge your documents from your terminal."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -70,6 +70,6 @@ full = [
     "onnxruntime>=1.18.0"
 ]
 [project.scripts]
-docmax-demo = "docmax-demo.cli:app"
+docmax-demo = "docmax.cli:app"
 
 [project.urls]
